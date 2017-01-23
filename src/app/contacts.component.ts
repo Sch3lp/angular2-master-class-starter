@@ -7,15 +7,15 @@ import {Contact} from './models/contact';
     <md-toolbar color="primary">Contacts</md-toolbar>
     <md-list>
       <md-list-item>
-        <img md-list-avatar [src]="diana.image" alt="Picture of {{diana.name}}">
-        <h3 md-line>{{diana.name}}</h3>
+        <img md-list-avatar [src]="contact.image" alt="Picture of {{contact.name}}">
+        <h3 md-line>{{contact.name}}</h3>
       </md-list-item>
     </md-list>
   `,
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsAppComponent {
-  private diana:Contact = {
+  private contact:Contact = {
     id: 6,
     name: 'Diana Ellis',
     email: '',
