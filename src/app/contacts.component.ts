@@ -6,26 +6,16 @@ import {ContactsService} from "./contacts.service";
   selector: 'trm-contacts-app',
   template: `
     <md-toolbar color="primary">Contacts</md-toolbar>
-    <md-list>
-      <md-list-item *ngFor="let contact of contacts; trackBy: byId">
-        <img md-list-avatar [src]="contact.image" alt="Picture of {{contact.name}}">
-        <h3 md-line>{{contact.name}}</h3>
-      </md-list-item>
-    </md-list>
+    <trm-contacts-list></trm-contacts-list>
   `,
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsAppComponent implements OnInit {
 
-  private contacts : Array<Contact> = [];
-
-  constructor(private contactsService: ContactsService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.contacts = this.contactsService.getContacts();
+
   }
 
-  byId(idx:number, contact:Contact) {
-    return contact.id;
-  }
 }

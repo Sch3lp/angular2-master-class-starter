@@ -4,10 +4,11 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ContactsAppComponent } from './contacts.component';
-import {ContactsService} from "./contacts.service";
+import { ContactsService } from "./contacts.service";
+import { ContactsListComponent } from './contacts-list/contacts-list.component';
 
 @NgModule({
-  declarations: [ContactsAppComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent],
   imports: [
     BrowserModule,
     MaterialModule.forRoot(),

@@ -1,4 +1,5 @@
-export const CONTACT_DATA = [
+import {Contact} from "../models/contact";
+export const CONTACT_DATA:Array<Contact> = [
     {
         id: 0,
         name: 'Christoph Burgdorf',
