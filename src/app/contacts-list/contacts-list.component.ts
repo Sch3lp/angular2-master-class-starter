@@ -5,12 +5,12 @@ import { Contact } from "../models/contact";
 @Component({
   selector: 'trm-contacts-list',
   template: `
-    <md-list>
-      <md-list-item *ngFor="let contact of contacts; trackBy: byId">
+    <md-nav-list>
+      <a md-list-item *ngFor="let contact of contacts; trackBy: byId" [routerLink]="['contact',contact.id]">
         <img md-list-avatar [src]="contact.image" alt="Picture of {{contact.name}}">
         <h3 md-line>{{contact.name}}</h3>
-      </md-list-item>
-    </md-list>
+      </a>
+    </md-nav-list>
 `,
   styleUrls: ['./contacts-list.component.css']
 })
