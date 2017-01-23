@@ -55,3 +55,6 @@ And when you add a module to your `@NgModule imports`, it will add the providers
 
 ## ngModel comes with FormsModule
 .
+
+## Stateless methods!
+Prefer stateless methods, so pass a `Contact` to your save method instead of depending on internal state.
