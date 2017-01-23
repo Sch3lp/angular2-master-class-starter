@@ -39,7 +39,7 @@ providers: [
 Not TypeScript specific!
 
 ## img src url's that get dynamically asynchronously filled in cause 404's
-Even using the _url safe param_ causes this: `<img [src]='contact?.name'>`.
+Even using the _safe navigation_ causes this: `<img [src]='contact?.name'>`.
 
 ### Solution
 Add a fallback: `<img [src]="contact?.name || ''">`
