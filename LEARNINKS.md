@@ -46,3 +46,9 @@ Add a fallback: `<img [src]="contact?.name || ''">`
 
 ## Modules come with their own Providers
 And when you add a module to your `@NgModule imports`, it will add the providers of that module to your `@NgModule providers`.
+
+## Explicit two-way binding
+```
+<input [value]="name"
+  (input)="name=$event.target.value">
+```
