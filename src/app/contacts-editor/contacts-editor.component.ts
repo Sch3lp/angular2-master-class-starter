@@ -70,10 +70,14 @@ export class ContactsEditorComponent implements OnInit {
 
   save(contact:Contact) {
     this.contactsService.updateContact(contact)
-      .subscribe(() => this.router.navigate(['contact',contact.id]));
+      .subscribe(() => this.goToDetails(contact));
   }
 
   cancel(contact:Contact){
-    this.router.navigate(['contact', contact.id]);
+    this.goToDetails(contact);
+  }
+
+  private goToDetails(contact: Contact) {
+    return this.router.navigate(['contact', contact.id]);
   }
 }
