@@ -52,3 +52,6 @@ And when you add a module to your `@NgModule imports`, it will add the providers
 <input [value]="name"
   (input)="name=$event.target.value">
 ```
+
+## ngModel comes with FormsModule
+.
