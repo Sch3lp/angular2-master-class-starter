@@ -13,3 +13,5 @@ That's why [title] semantically defines you want to access the **property** inst
 ## Angular 2 user decides how values are bound
 In contrast to AngularJS (angular 1).
 
+## `*ngFor` asterisk
+`*` indicates a structural directive, meaning the template will be dynamically changed
