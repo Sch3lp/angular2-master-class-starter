@@ -15,3 +15,22 @@ In contrast to AngularJS (angular 1).
 
 ## `*ngFor` asterisk
 `*` indicates a structural directive, meaning the template will be dynamically changed
+
+## `@Injectable` is not the same as Springs `@Component`
+Something about type preservation for TypeScript?
+
+## Providers
+```
+providers: [
+    ContactsService
+]
+```
+is a shorthand for
+```
+providers: [
+    { provide: ContactsService, useClass: ContactsService }
+]
+```
+`provide: ...` says which _Token_ to use, like Springs `@Bean(name="derp")`.
+
+`useClass: ...` would then be something like Springs `@Qualified("derp")`.
