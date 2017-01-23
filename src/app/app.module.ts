@@ -10,6 +10,8 @@ import {ContactsListComponent} from './contacts-list/contacts-list.component';
 import {RouterModule} from "@angular/router";
 import {APP_ROUTES} from "./app.routes";
 import {ContactsDetailComponent} from './contacts-detail/contacts-detail.component';
+import {environment} from "../environments/environment";
+
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent],
@@ -21,7 +23,8 @@ import {ContactsDetailComponent} from './contacts-detail/contacts-detail.compone
     RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [
-    ContactsService
+    ContactsService,
+    { provide: 'baseUrl', useValue: environment.baseUrl }
   ],
   bootstrap: [ContactsAppComponent]
 })
