@@ -32,6 +32,7 @@ import {Contact} from "../models/contact";
           </dl>
         </md-card-content>
         <md-card-actions fxLayout fxLayoutAlign="center center">
+          <a md-button title="Edit" [routerLink]="['edit']">Edit</a>
           <a md-button title="Go back to list" [routerLink]="['/']">Go Back</a>
         </md-card-actions>
       </md-card>

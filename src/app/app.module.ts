@@ -11,13 +11,16 @@ import {RouterModule} from "@angular/router";
 import {APP_ROUTES} from "./app.routes";
 import {ContactsDetailComponent} from './contacts-detail/contacts-detail.component';
 import {environment} from "../environments/environment";
+import { ContactsEditorComponent } from './contacts-editor/contacts-editor.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES)
