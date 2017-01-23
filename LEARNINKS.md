@@ -34,3 +34,15 @@ providers: [
 `provide: ...` says which _Token_ to use, like Springs `@Bean(name="derp")`.
 
 `useClass: ...` would then be something like Springs `@Qualified("derp")`.
+
+## ?. is angular specific
+Not TypeScript specific!
+
+## img src url's that get dynamically asynchronously filled in cause 404's
+Even using the _url safe param_ causes this: `<img [src]='contact?.name'>`.
+
+### Solution
+Add a fallback: `<img [src]="contact?.name || ''">`
+
+## Modules come with their own Providers
+And when you add a module to your `@NgModule imports`, it will add the providers of that module to your `@NgModule providers`.
