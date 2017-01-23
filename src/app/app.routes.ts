@@ -5,4 +5,5 @@ import {ContactsDetailComponent} from "./contacts-detail/contacts-detail.compone
 export const APP_ROUTES:Routes = [
   { path: '', component: ContactsListComponent },
   { path: 'contact/:id', component: ContactsDetailComponent },
+  { path: '**', redirectTo: '/' }
 ];
