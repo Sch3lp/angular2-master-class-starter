@@ -96,3 +96,6 @@ Because `.fromEvent` tightly couples your code to the DOM, and we're trying desp
 Because you can wait for a _natural_ time interval, after which you'll have more knowledge to make a better decision.
 
 In our case it was waiting for a user to have typed what he was trying to search for.
+
+## A `Subject` is actually an `Observable`
+So you can use it as such and pass it to methods that takes an `Observable` as an argument.
