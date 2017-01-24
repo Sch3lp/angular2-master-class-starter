@@ -33,11 +33,8 @@ export class ContactsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contacts = this.term$
-      .debounceTime(400)
-      .distinctUntilChanged()
-      .switchMap(term => this.contactsService.search(term))
-      .merge(this.contactsService.getContacts());
+    this.contacts = this.contactsService.searchable(this.term$)
+                        .merge(this.contactsService.getContacts());
   }
 
   byId(idx: number, contact: Contact) {

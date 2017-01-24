@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Contact} from "./models/contact";
 
 
@@ -36,4 +36,10 @@ export class ContactsService {
       .map(data => data.items);
   }
 
+  searchable(term$: Subject<string>):Observable<Array<Contact>> {
+    return term$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .switchMap(term => this.search(term));
+  }
 }
