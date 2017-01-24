@@ -33,7 +33,7 @@ export class ContactsDetailViewComponent implements OnInit {
   }
 
   navigateToList() {
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
 }
