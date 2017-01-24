@@ -108,3 +108,11 @@ Are not the same as a `Presenter` in the `MVP` design pattern.
 
 Don't try to make an analogy with `MVP`.
 
+## Relativity while using router.navigate in `ViewComponent`s
+`[routeLink]` automatically sets up the `router` to work with relative urls.
+
+And when you don't use `[routeLink]` but programmatically navigate, 
+you'll have to pass in an `extraOptions` object literal where you tell it to route relatively:
+```
+{ relativeTo: this.route }
+```
