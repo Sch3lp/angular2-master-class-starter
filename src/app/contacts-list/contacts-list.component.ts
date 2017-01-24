@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactsService } from "../contacts.service";
-import { Contact } from "../models/contact";
+import {Component, OnInit} from '@angular/core';
+import {ContactsService} from "../contacts.service";
+import {Contact} from "../models/contact";
 import {Observable, Subject} from "rxjs";
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'trm-contacts-list',
@@ -25,23 +26,20 @@ import 'rxjs/add/operator/distinctUntilChanged';
 })
 export class ContactsListComponent implements OnInit {
   private contacts: Observable<Array<Contact>>;
-  private term$:Subject<string> = new Subject<string>();
+  private term$: Subject<string> = new Subject<string>();
 
-  constructor(private contactsService: ContactsService) { }
+  constructor(private contactsService: ContactsService) {
+  }
 
   ngOnInit() {
-    this.contacts = this.contactsService.getContacts();
-    this.term$
+    this.contacts = this.term$
       .debounceTime(400)
       .distinctUntilChanged()
-      .subscribe(this.search);
+      .switchMap(term => this.contactsService.search(term))
+      .merge(this.contactsService.getContacts());
   }
 
-  search(term: string) {
-    this.contacts = this.contactsService.search(term);
-  }
-
-  byId(idx:number, contact:Contact) {
+  byId(idx: number, contact: Contact) {
     return contact.id;
   }
 }
