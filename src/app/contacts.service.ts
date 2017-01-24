@@ -1,32 +1,37 @@
 import {Injectable, Inject} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/map";
-import {environment} from '../environments/environment';
 import {Observable} from "rxjs";
 import {Contact} from "./models/contact";
 
-const baseUrl: string = `${environment.baseUrl}/contacts`;
 
 @Injectable()
 export class ContactsService {
 
+  private contactsBaseUrl: string
 
   constructor(private http: Http, @Inject("baseUrl") private baseUrl:string) {
+    this.contactsBaseUrl = `${this.baseUrl}/contacts`;
   }
 
   getContacts() {
-    return this.http.get(baseUrl)
+    return this.http.get(this.contactsBaseUrl)
       .map(res => res.json())
       .map(data => data.items);
   }
 
   get(id: string):Observable<Contact> {
-    return this.http.get(`${baseUrl}/${id}`)
+    return this.http.get(`${this.contactsBaseUrl}/${id}`)
       .map(res => res.json())
       .map(data => data.item);
   }
 
   updateContact(contact: Contact):Observable<any> {
-    return this.http.put(`${baseUrl}/${contact.id}`, contact);
+    return this.http.put(`${this.contactsBaseUrl}/${contact.id}`, contact);
   }
+
+  search(term: string) {
+    return this.http.get(`${this.baseUrl}/search?text=${term}`)
+  }
+
 }
