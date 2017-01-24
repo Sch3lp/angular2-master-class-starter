@@ -116,3 +116,5 @@ you'll have to pass in an `extraOptions` object literal where you tell it to rou
 ```
 { relativeTo: this.route }
 ```
+## App reacting in a weird way?
+Commenting out the wildcard route in `app.routes` can be helpful.
