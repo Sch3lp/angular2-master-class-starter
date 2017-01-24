@@ -71,3 +71,14 @@ So you can do it the `Elm` way, but it's going to be easier if you simply use re
 Use nav guard + resolvers instead of `?.` everywhere.
 
 Don't even load/`init` the page when the required state isn't available yet.
+
+## Composable in relation to Observables
+_Composable_ means e.g. waiting for multiple calls to finish and THEN do something. 
+
+This is something you can't do with regular (DOM) event handlers
+
+## Singular operation in relation to Observables
+_Singular_ means being able to get both a _success_ and _failed_ result.
+
+## Observables are like Streams in Java
+.
