@@ -47,7 +47,7 @@ export class ContactsDetailComponent implements OnInit {
   private edit = new EventEmitter<Contact>();
 
   @Output()
-  private back = new EventEmitter();
+  private back = new EventEmitter<void>();
 
   constructor() { }
 
