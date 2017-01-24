@@ -88,3 +88,11 @@ Basically means _infinite stream_ handling (e.g. mouseMoved Event), also applies
 
 ## Push vs. Pull
 Not explained in course but still important: Pull == blocking. Push == non-blocking
+
+## Subject over Observable.fromEvent('click','domElement')
+Because `.fromEvent` tightly couples your code to the DOM, and we're trying desperately to avoid that.
+
+## debounceTime enables making better decisions
+Because you can wait for a _natural_ time interval, after which you'll have more knowledge to make a better decision.
+
+In our case it was waiting for a user to have typed what he was trying to search for.
