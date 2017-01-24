@@ -86,3 +86,5 @@ Basically means _infinite stream_ handling (e.g. mouseMoved Event), also applies
 ## Observables are like Streams in Java
 .
 
+## Push vs. Pull
+Not explained in course but still important: Pull == blocking. Push == non-blocking
