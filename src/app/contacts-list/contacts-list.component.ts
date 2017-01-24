@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from "../contacts.service";
 import { Contact } from "../models/contact";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'trm-contacts-list',
   template: `
     <md-toolbar>
       <md-input-container dividerColor="accent" class="trm-search-container">
-        <input md-input type="text" (input)="search($event.target.value)">
+        <input md-input type="text" (input)="term$.next($event.target.value)">
       </md-input-container>
       <md-icon color="accent">search</md-icon>
     </md-toolbar>
@@ -23,11 +25,16 @@ import {Observable} from "rxjs";
 })
 export class ContactsListComponent implements OnInit {
   private contacts: Observable<Array<Contact>>;
+  private term$:Subject<string> = new Subject<string>();
 
   constructor(private contactsService: ContactsService) { }
 
   ngOnInit() {
     this.contacts = this.contactsService.getContacts();
+    this.term$
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(term => this.search(term));
   }
 
   search(term: string) {
