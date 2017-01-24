@@ -34,7 +34,7 @@ export class ContactsListComponent implements OnInit {
     this.term$
       .debounceTime(400)
       .distinctUntilChanged()
-      .subscribe(term => this.search(term));
+      .subscribe(this.search);
   }
 
   search(term: string) {
