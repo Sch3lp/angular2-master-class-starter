@@ -14,7 +14,7 @@ export class ContactsService {
     this.contactsBaseUrl = `${this.baseUrl}/contacts`;
   }
 
-  getContacts() {
+  getContacts():Observable<Array<Contact>> {
     return this.http.get(this.contactsBaseUrl)
       .map(res => res.json())
       .map(data => data.items);
@@ -30,8 +30,10 @@ export class ContactsService {
     return this.http.put(`${this.contactsBaseUrl}/${contact.id}`, contact);
   }
 
-  search(term: string) {
+  search(term: string):Observable<Array<Contact>> {
     return this.http.get(`${this.baseUrl}/search?text=${term}`)
+      .map(res => res.json())
+      .map(data => data.items);
   }
 
 }
