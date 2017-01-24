@@ -80,5 +80,9 @@ This is something you can't do with regular (DOM) event handlers
 ## Singular operation in relation to Observables
 _Singular_ means being able to get both a _success_ and _failed_ result.
 
+## Non-singular operations in relation to Observables
+Basically means _infinite stream_ handling (e.g. mouseMoved Event), also applies to Observables.
+
 ## Observables are like Streams in Java
 .
+
