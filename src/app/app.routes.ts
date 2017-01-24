@@ -6,6 +6,6 @@ import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detai
 export const APP_ROUTES:Routes = [
   { path: '', component: ContactsListComponent },
   { path: 'contact/:id/edit', component: ContactsEditorComponent },
-  { path: 'contact/:id', component: ContactsDetailViewComponent }
-  // { path: '**', redirectTo: '/' }
+  { path: 'contact/:id', component: ContactsDetailViewComponent },
+  { path: '**', redirectTo: '/' }
 ];
