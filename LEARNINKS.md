@@ -61,3 +61,13 @@ Prefer stateless methods, so pass a `Contact` to your save method instead of dep
 
 ## OpaqueToken instead of own class
 Provides proper error messages
+
+## Use relative urls for routing
+Because you'd want to protect your fellow devs of routing to non existing paths.
+
+So you can do it the `Elm` way, but it's going to be easier if you simply use relative urls.
+
+## Dealing with optional state in a component
+Use nav guard + resolvers instead of `?.` everywhere.
+
+Don't even load/`init` the page when the required state isn't available yet.
