@@ -118,3 +118,6 @@ you'll have to pass in an `extraOptions` object literal where you tell it to rou
 ```
 ## App reacting in a weird way?
 Commenting out the wildcard route in `app.routes` can be helpful.
+
+## Best practice: use `@Host` on component injection
+Use it to be more specific about which component to inject.
