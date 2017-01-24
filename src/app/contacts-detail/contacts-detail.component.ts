@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ContactsService} from "../contacts.service";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {Contact} from "../models/contact";
 
 @Component({
@@ -32,8 +30,8 @@ import {Contact} from "../models/contact";
           </dl>
         </md-card-content>
         <md-card-actions fxLayout fxLayoutAlign="center center">
-          <a md-button title="Edit" [routerLink]="['edit']">Edit</a>
-          <a md-button title="Go back to list" [routerLink]="['/']">Go Back</a>
+          <button md-button title="Edit" (click)="edit.emit(contact)">Edit</button>
+          <button md-button title="Go back to list" (click)="back.emit()">Go Back</button>
         </md-card-actions>
       </md-card>
     </div>
@@ -42,15 +40,18 @@ import {Contact} from "../models/contact";
 })
 export class ContactsDetailComponent implements OnInit {
 
+  @Input()
   private contact:Contact;
 
-  constructor(private contactsService: ContactsService, private route:ActivatedRoute) { }
+  @Output()
+  private edit = new EventEmitter<Contact>();
+
+  @Output()
+  private back = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
-    this.contactsService.get(this.route.snapshot.params['id'])
-      .subscribe(contact => {
-        this.contact = contact;
-      });
   }
 
 }
