@@ -14,6 +14,7 @@ import {ContactsListComponent} from './contacts-list/contacts-list.component';
 import {ContactsEditorComponent} from './contacts-editor/contacts-editor.component';
 import {ContactsDetailComponent} from './contacts-detail/contacts-detail.component';
 import {ContactsDetailViewComponent} from './contacts-detail-view/contacts-detail-view.component';
+import {EventBusService} from "./event-bus.service";
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent],
@@ -27,6 +28,7 @@ import {ContactsDetailViewComponent} from './contacts-detail-view/contacts-detai
   ],
   providers: [
     ContactsService,
+    EventBusService,
     { provide: 'baseUrl', useValue: environment.baseUrl }
   ],
   bootstrap: [ContactsAppComponent]
