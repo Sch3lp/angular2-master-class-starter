@@ -99,3 +99,12 @@ In our case it was waiting for a user to have typed what he was trying to search
 
 ## A `Subject` is actually an `Observable`
 So you can use it as such and pass it to methods that takes an `Observable` as an argument.
+
+## Presentation, Business, View Components
+This is an Angular2 Architecture perception (and lingo) of ThoughtRam!
+
+### Presentation Components
+Are not the same as a `Presenter` in the `MVP` design pattern.
+
+Don't try to make an analogy with `MVP`.
+
