@@ -121,3 +121,6 @@ Commenting out the wildcard route in `app.routes` can be helpful.
 
 ## Best practice: use `@Host` on component injection
 Use it to be more specific about which component to inject.
+
+## QueryList is also an Observable
+Makes it easy to use, and might not even need an `ngAfterOnInit`.
