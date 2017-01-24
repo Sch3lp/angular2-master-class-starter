@@ -38,7 +38,7 @@ import {Contact} from "../models/contact";
   `,
   styleUrls: ['./contacts-detail.component.css']
 })
-export class ContactsDetailComponent implements OnInit {
+export class ContactsDetailComponent {
 
   @Input()
   private contact:Contact;
@@ -48,10 +48,5 @@ export class ContactsDetailComponent implements OnInit {
 
   @Output()
   private back = new EventEmitter<void>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
