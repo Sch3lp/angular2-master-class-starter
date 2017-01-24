@@ -125,3 +125,6 @@ Use it to be more specific about which component to inject.
 ## QueryList is also an Observable
 Makes it easier to use, you can also react to `.changes` Observable when content gets pushed by a server.
 Take care to still subscribe to `.changes` in the `ngAfterOnInit`, otherwise the `QueryList`'ll be undefined.
+
+## $ convention
+Append `$` to variable names to denote a `Stream` or `Observable`.
