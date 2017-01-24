@@ -6,7 +6,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/merge';
-import {EventBusService} from "../event-bus.service";
+import {EventBusService, EventType} from "../event-bus.service";
 
 @Component({
   selector: 'trm-contacts-list',
@@ -39,7 +39,7 @@ export class ContactsListComponent implements OnInit {
   ngOnInit() {
     this.contacts = this.contactsService.searchable(this.term$)
                         .merge(this.contactsService.getContacts());
-    this.eventBus.emit('appTitleChanged', 'ContactList');
+    this.eventBus.emit(EventType.AppTitleChanged, 'ContactList');
   }
 
   byId(idx: number, contact: Contact) {

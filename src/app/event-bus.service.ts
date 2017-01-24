@@ -12,11 +12,11 @@ export class EventBusService {
   constructor() {
   }
 
-  public emit(eventType: string, data: any):void {
-    this.messages$.next(new EventBusArgs(eventType, data));
+  public emit(eventType: EventType, data: any):void {
+    this.messages$.next({type: eventType, data: data});
   }
 
-  public observe(eventType: string):Observable<any> {
+  public observe(eventType: EventType):Observable<any> {
     return this.messages$
       .filter(eba => eba.type === eventType)
       .map(args => args.data);
@@ -24,9 +24,12 @@ export class EventBusService {
 
 }
 
-class EventBusArgs {
-  constructor(
-    public type: string,
-    public data: any
-  ){}
+export enum EventType {
+  AppTitleChanged
 }
+
+interface EventBusArgs {
+  type: EventType;
+  data: any;
+}
+
