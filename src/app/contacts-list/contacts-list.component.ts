@@ -23,6 +23,9 @@ import {EventBusService, EventType} from "../event-bus.service";
         <h3 md-line>{{contact.name}}</h3>
       </a>
     </md-nav-list>
+    <a md-fab title="Add a new contact" class="trm-floating-button" [routerLink]="['contact','new']">
+      <md-icon class="md-24">add</md-icon>
+    </a>
 `,
   styleUrls: ['./contacts-list.component.css']
 })

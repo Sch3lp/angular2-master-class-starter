@@ -30,6 +30,11 @@ export class ContactsService {
     return this.http.put(`${this.contactsBaseUrl}/${contact.id}`, contact);
   }
 
+  addContact(contact: Contact):Observable<any> {
+    console.log(`in addContact with ${contact}`);
+    return this.http.post(`${this.contactsBaseUrl}`, contact);
+  }
+
   search(term: string):Observable<Array<Contact>> {
     return this.http.get(`${this.baseUrl}/search?text=${term}`)
       .map(res => res.json())

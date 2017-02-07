@@ -15,9 +15,10 @@ import {ContactsEditorComponent} from './contacts-editor/contacts-editor.compone
 import {ContactsDetailComponent} from './contacts-detail/contacts-detail.component';
 import {ContactsDetailViewComponent} from './contacts-detail-view/contacts-detail-view.component';
 import {EventBusService} from "./event-bus.service";
+import { ContactsCreatorComponent } from './contacts-creator/contacts-creator.component';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent],
   imports: [
     BrowserModule,
     HttpModule,
