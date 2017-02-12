@@ -17,14 +17,17 @@ import {Router} from "@angular/router";
       <md-card-content>
         <div fxLayout="column">
           <md-input-container fxFlex [dividerColor]="name.errors ? 'warn' : 'primary'">
-            <input md-input placeholder="Name" name="name" #name="ngModel" ngModel required minlength="3">
+            <input md-input placeholder="Name" name="name" ngModel required minlength="3" #name="ngModel">
             <md-hint align="end" *ngIf="!name.valid && !name.pristine">
               <template [ngIf]="name.errors?.required">This field is required</template>
               <template [ngIf]="name.errors?.minlength">A name must have at least {{name.errors.minlength.requiredLength}} characters, but was {{name.errors.minlength.actualLength}}.</template>
             </md-hint>
           </md-input-container>
-          <md-input-container fxFlex>
-            <input md-input placeholder="Email" name="email" ngModel>
+          <md-input-container fxFlex [dividerColor]="email.errors ? 'warn' : 'primary'">
+            <input md-input placeholder="Email" name="email" ngModel trmValidateEmail #email="ngModel">
+            <md-hint align="end" *ngIf="!email.valid && !email.pristine">
+              <template [ngIf]="!email.errors?.validEmail">The email address should look like example@mail.com.</template>
+            </md-hint>
           </md-input-container>
           <md-input-container fxFlex>
             <input md-input placeholder="Birthday" name="birthday" type="date" ngModel>

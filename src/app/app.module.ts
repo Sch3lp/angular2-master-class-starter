@@ -5,7 +5,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from "@angular/router";
 import {environment} from "../environments/environment";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, NG_VALIDATORS} from "@angular/forms";
 
 import {APP_ROUTES} from "./app.routes";
 import {ContactsAppComponent} from './contacts.component';
@@ -16,9 +16,10 @@ import {ContactsDetailComponent} from './contacts-detail/contacts-detail.compone
 import {ContactsDetailViewComponent} from './contacts-detail-view/contacts-detail-view.component';
 import {EventBusService} from "./event-bus.service";
 import { ContactsCreatorComponent } from './contacts-creator/contacts-creator.component';
+import { EmailValidator } from './email-validator.directive';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent, EmailValidator],
   imports: [
     BrowserModule,
     HttpModule,
