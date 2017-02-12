@@ -128,3 +128,7 @@ Take care to still subscribe to `.changes` in the `ngAfterOnInit`, otherwise the
 
 ## $ convention
 Append `$` to variable names to denote a `Stream` or `Observable`.
+
+## `#` to name model and form stuff 
+eg. `#derpyForm="ngForm"` to identify a form with `derpyForm`.
+Also works for ngModel: `#firstName="ngModel"`.
