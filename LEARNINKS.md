@@ -131,4 +131,9 @@ Append `$` to variable names to denote a `Stream` or `Observable`.
 
 ## `#` to name model and form stuff 
 eg. `#derpyForm="ngForm"` to identify a form with `derpyForm`.
-Also works for ngModel: `#firstName="ngModel"`.
+Also works for ngModel: `#firstName="ngModel"`. 
+
+Just don't forget to also add the `ngModel` property... Or you'll get errors:
+`There is no directive with "exportAs" set to "ngModel"`
+
+Fy faen
