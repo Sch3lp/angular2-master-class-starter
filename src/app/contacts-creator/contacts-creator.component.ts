@@ -19,8 +19,8 @@ import {Router} from "@angular/router";
           <md-input-container fxFlex [dividerColor]="name.errors ? 'warn' : 'primary'">
             <input md-input placeholder="Name" name="name" #name="ngModel" ngModel required minlength="3">
             <md-hint align="end" *ngIf="!name.valid && !name.pristine">
-              {{ name.errors.required ? "Name is required." : "" }}
-              {{ name.errors.minlength ? "Name requires at least "+name.errors.minlength.requiredLength+" characters, but was "+name.errors.minlength.actualLength : "" }}
+              <template [ngIf]="name.errors?.required">This field is required</template>
+              <template [ngIf]="name.errors?.minlength">A name must have at least {{name.errors.minlength.requiredLength}} characters, but was {{name.errors.minlength.actualLength}}.</template>
             </md-hint>
           </md-input-container>
           <md-input-container fxFlex>
