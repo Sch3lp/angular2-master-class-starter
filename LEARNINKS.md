@@ -137,3 +137,16 @@ Just don't forget to also add the `ngModel` property... Or you'll get errors:
 `There is no directive with "exportAs" set to "ngModel"`
 
 Fy faen
+
+## `<template>` inside `<md-hint>`
+Compare:
+```
+{{ name.errors.required ? "Name is required." : "" }}
+{{ name.errors.minlength ? "Name requires at least "+name.errors.minlength.requiredLength+" characters, but was "+name.errors.minlength.actualLength : "" }}
+```
+to:
+```
+<template [ngIf]="name.errors?.required">This field is required</template>
+<template [ngIf]="name.errors?.minlength">A name must have at least {{name.errors.minlength.requiredLength}} characters</template>
+```
+ 

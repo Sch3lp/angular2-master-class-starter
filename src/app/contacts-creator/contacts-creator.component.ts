@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
   selector: 'trm-contacts-creator',
   template: `
 <div class="trm-contacts-creator">
-  <form #form="ngForm" (ngSubmit)="save(form.value)">
+  <form #form="ngForm" (ngSubmit)="save(form.value)" novalidate>
     <md-card>
       <md-card-title-group>
         <img md-card-md-image alt="Placeholder image" src="/assets/images/placeholder.png">
@@ -16,8 +16,12 @@ import {Router} from "@angular/router";
       </md-card-title-group>
       <md-card-content>
         <div fxLayout="column">
-          <md-input-container fxFlex>
-            <input md-input placeholder="Name" name="name" ngModel>
+          <md-input-container fxFlex [dividerColor]="name.errors ? 'warn' : 'primary'">
+            <input md-input placeholder="Name" name="name" #name="ngModel" ngModel required minlength="3">
+            <md-hint align="end" *ngIf="!name.valid && !name.pristine">
+              {{ name.errors.required ? "Name is required." : "" }}
+              {{ name.errors.minlength ? "Name requires at least "+name.errors.minlength.requiredLength+" characters, but was "+name.errors.minlength.actualLength : "" }}
+            </md-hint>
           </md-input-container>
           <md-input-container fxFlex>
             <input md-input placeholder="Email" name="email" ngModel>
@@ -46,7 +50,7 @@ import {Router} from "@angular/router";
         </div>
       </md-card-content>
       <md-card-actions fxLayout fxLayoutAlign="center center">
-        <button md-button type="submit">Save</button>
+        <button md-button type="submit" [disabled]="!form.valid">Save</button>
         <a md-button title="Cancel creating new contact" [routerLink]="'/'">Cancel</a>
       </md-card-actions>
     </md-card>
@@ -56,8 +60,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./contacts-creator.component.css']
 })
 export class ContactsCreatorComponent implements OnInit {
-
-  contact:Contact;
 
   constructor(private contactsService: ContactsService, private router: Router) { }
 
