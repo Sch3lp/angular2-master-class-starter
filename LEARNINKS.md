@@ -150,3 +150,4 @@ to:
 <template [ngIf]="name.errors?.minlength">A name must have at least {{name.errors.minlength.requiredLength}} characters</template>
 ```
  
+## `template [ngIf]` vs. `*ngIf`
