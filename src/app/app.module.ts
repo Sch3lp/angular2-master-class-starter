@@ -5,7 +5,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from "@angular/router";
 import {environment} from "../environments/environment";
-import {FormsModule, NG_VALIDATORS} from "@angular/forms";
+import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from "@angular/forms";
 
 import {APP_ROUTES} from "./app.routes";
 import {ContactsAppComponent} from './contacts.component';
@@ -25,6 +25,7 @@ import { EmailAvailabilityValidator } from './email-availability-validator.direc
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES)

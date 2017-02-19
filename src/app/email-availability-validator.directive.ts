@@ -2,7 +2,7 @@ import {Directive, forwardRef} from '@angular/core';
 import {FormControl, NG_ASYNC_VALIDATORS} from "@angular/forms";
 import {ContactsService, AvailableEmail} from "./contacts.service";
 
-function checkEmailAvailability(contactsService: ContactsService) {
+export function checkEmailAvailability(contactsService: ContactsService) {
   return (c: FormControl) => {
     return contactsService.isEmailAvailable(c.value)
       .map(availability => {
