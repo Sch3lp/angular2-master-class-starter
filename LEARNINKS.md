@@ -151,3 +151,32 @@ to:
 ```
  
 ## `template [ngIf]` vs. `*ngIf`
+
+## sync + async validators are messy
+Async validator doesn't allow sync validator to finish validating?
+
+Because whenever an email address is unavailable, it will also display the message that the email address is invalid.
+
+## There's no Type pattern matching in TypeScript T_T
+Best you can get is exporting predicate functions:
+```typescript
+export type AvailableEmail = { msg: string };
+export type UnavailableEmail = { error: string };
+export type EmailAvailability = AvailableEmail | UnavailableEmail;
+export function emailIsAvailable(check: EmailAvailability): check is AvailableEmail {
+  return (<AvailableEmail>check).msg !== undefined;
+}
+```
+
+TypeScript will then give compiler errors:
+```typescript
+if (emailIsAvailable(check)) {
+  check.error // <-- AvailableEmail doesn't have an error property
+} else {
+  check.msg // <-- UnavailableEmail doesn't have a msg property
+}
+```
+
+More info in [TypeScript's Advanced Types documentation](https://www.typescriptlang.org/docs/handbook/advanced-types.html).
+
+There are small libraries out there though: [mcz](https://github.com/shogogg/mcz), [typematch](https://github.com/thalesmello/typematch), [kasai](https://github.com/cshepp/Kasai).
