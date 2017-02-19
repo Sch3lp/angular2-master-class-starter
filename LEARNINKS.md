@@ -187,3 +187,14 @@ Another way is to make AvailableEmail and UnavailableEmail a Class instead of a 
 More info in [TypeScript's Advanced Types documentation](https://www.typescriptlang.org/docs/handbook/advanced-types.html).
 
 There are small libraries out there though: [mcz](https://github.com/shogogg/mcz), [typematch](https://github.com/thalesmello/typematch), [kasai](https://github.com/cshepp/Kasai).
+
+## useExisting in ASYNC_VALIDATORS
+[Read this](https://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html).
+
+Most important phrase is this: _However, we already added EmailValidator to the directives property of our component, which is a provider with the useClass recipe. We want to make sure that we get the exact same instance of EmailValidator on our form control, even though, we define a new provider for it._
+
+The Validator is already added to the _directives property of our component_, because the `@Directive` decorator will add it to the app.module.
+ 
+That's why we want to _useExisting_, and make sure we alias the original `EmailAvailabilityValidator`.
+
+

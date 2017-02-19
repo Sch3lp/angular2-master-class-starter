@@ -18,7 +18,8 @@ function checkEmailAvailability(contactsService: ContactsService) {
   providers: [
     { provide: NG_ASYNC_VALIDATORS,
       useExisting: forwardRef(() => EmailAvailabilityValidator),
-      multi: true }
+      multi: true
+    }
   ]
 })
 export class EmailAvailabilityValidator {
