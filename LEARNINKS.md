@@ -193,8 +193,10 @@ There are small libraries out there though: [mcz](https://github.com/shogogg/mcz
 
 Most important phrase is this: _However, we already added EmailValidator to the directives property of our component, which is a provider with the useClass recipe. We want to make sure that we get the exact same instance of EmailValidator on our form control, even though, we define a new provider for it._
 
-The Validator is already added to the _directives property of our component_, because the `@Directive` decorator will add it to the app.module.
+The validator is already added to the _directives property of our component_, because we're simply using it in the ContactsCreator component.
  
 That's why we want to _useExisting_, and make sure we alias the original `EmailAvailabilityValidator`.
+
+It's in the [solutions' commentary](https://github.com/thoughtram/angular2-master-class-solutions/commit/198e9235c49de43d383eed06faa3f6f2926fde1f#diff-2ba0d0bd8a56a22e9f0aed1b936fa497R21)
 
 
