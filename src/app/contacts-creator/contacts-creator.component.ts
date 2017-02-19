@@ -24,9 +24,10 @@ import {Router} from "@angular/router";
             </md-hint>
           </md-input-container>
           <md-input-container fxFlex [dividerColor]="email.errors ? 'warn' : 'primary'">
-            <input md-input placeholder="Email" name="email" ngModel trmValidateEmail #email="ngModel">
+            <input md-input placeholder="Email" name="email" ngModel trmEmailShouldBeAvailable trmValidateEmail #email="ngModel">
             <md-hint align="end" *ngIf="!email.valid && !email.pristine">
-              <template [ngIf]="!email.errors?.validEmail">The email address should look like example@mail.com.</template>
+              <template [ngIf]="!email.errors?.validEmail && !email.errors?.emailTaken">The email address should look like example@mail.com.</template>
+              <template [ngIf]="email.errors?.emailTaken">Sorry, but {{email.value}} is already taken. :(</template>
             </md-hint>
           </md-input-container>
           <md-input-container fxFlex>

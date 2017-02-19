@@ -4,6 +4,12 @@ import "rxjs/add/operator/map";
 import {Observable, Subject} from "rxjs";
 import {Contact} from "./models/contact";
 
+export type AvailableEmail = { msg: string };
+export type UnavailableEmail = { error: string };
+export type EmailAvailability = AvailableEmail | UnavailableEmail;
+export function emailIsAvailable(check: EmailAvailability): check is AvailableEmail {
+  return (<AvailableEmail>check).msg !== undefined;
+}
 
 @Injectable()
 export class ContactsService {
@@ -47,4 +53,10 @@ export class ContactsService {
       .distinctUntilChanged()
       .switchMap(term => this.search(term));
   }
+
+  isEmailAvailable(email: String):Observable<EmailAvailability> {
+    return this.http.get(`${this.baseUrl}/check-email?email=${email}`)
+      .map(res => res.json());
+  }
+
 }

@@ -17,9 +17,10 @@ import {ContactsDetailViewComponent} from './contacts-detail-view/contacts-detai
 import {EventBusService} from "./event-bus.service";
 import { ContactsCreatorComponent } from './contacts-creator/contacts-creator.component';
 import { EmailValidator } from './email-validator.directive';
+import { EmailAvailabilityValidator } from './email-availability-validator.directive';
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent, EmailValidator],
+  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent, EmailValidator, EmailAvailabilityValidator],
   imports: [
     BrowserModule,
     HttpModule,
