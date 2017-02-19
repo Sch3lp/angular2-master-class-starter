@@ -177,6 +177,13 @@ if (emailIsAvailable(check)) {
 }
 ```
 
+Another way is to make AvailableEmail and UnavailableEmail a Class instead of a Type, and then map the response with a constructor function:
+```typescript
+.map(res => res.error
+  ? new UnavailableEmail(res.error)
+  : new AvailableEmail(res.msg));
+```
+
 More info in [TypeScript's Advanced Types documentation](https://www.typescriptlang.org/docs/handbook/advanced-types.html).
 
 There are small libraries out there though: [mcz](https://github.com/shogogg/mcz), [typematch](https://github.com/thalesmello/typematch), [kasai](https://github.com/cshepp/Kasai).
