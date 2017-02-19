@@ -4,17 +4,17 @@ import "rxjs/add/operator/map";
 import {Observable, Subject} from "rxjs";
 import {Contact} from "./models/contact";
 
-export type AvailableEmail = { msg: string };
-export type UnavailableEmail = { error: string };
+export class AvailableEmail { constructor(msg: string){} };
+export class UnavailableEmail { constructor(error: string){} };
 export type EmailAvailability = AvailableEmail | UnavailableEmail;
 export function emailIsAvailable(check: EmailAvailability): check is AvailableEmail {
-  return (<AvailableEmail>check).msg !== undefined;
+  return check instanceof AvailableEmail;
 }
 
 @Injectable()
 export class ContactsService {
 
-  private contactsBaseUrl: string
+  private contactsBaseUrl: string;
 
   constructor(private http: Http, @Inject("baseUrl") private baseUrl:string) {
     this.contactsBaseUrl = `${this.baseUrl}/contacts`;
@@ -56,7 +56,10 @@ export class ContactsService {
 
   isEmailAvailable(email: String):Observable<EmailAvailability> {
     return this.http.get(`${this.baseUrl}/check-email?email=${email}`)
-      .map(res => res.json());
+      .map(res => res.json())
+      .map(res => res.error
+        ? new UnavailableEmail(res.error)
+        : new AvailableEmail(res.msg));
   }
 
 }
