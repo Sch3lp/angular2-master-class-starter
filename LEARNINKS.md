@@ -160,8 +160,8 @@ Because whenever an email address is unavailable, it will also display the messa
 ## There's no Type pattern matching in TypeScript T_T
 Best you can get is exporting predicate functions:
 ```typescript
-export type AvailableEmail = { msg: string };
-export type UnavailableEmail = { error: string };
+export class AvailableEmail = { msg: string };
+export class UnavailableEmail = { error: string };
 export type EmailAvailability = AvailableEmail | UnavailableEmail;
 export function emailIsAvailable(check: EmailAvailability): check is AvailableEmail {
   return (<AvailableEmail>check).msg !== undefined;
