@@ -8,7 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-remap-istanbul'),
+      require('karma-coverage-istanbul-reporter'),
       require('angular-cli/plugins/karma')
     ],
     customLaunchers: {
@@ -24,13 +24,12 @@ module.exports = function (config) {
     preprocessors: {
       './src/test.ts': ['angular-cli']
     },
-    remapIstanbulReporter: {
-      reports: {
-        html: 'coverage'
-      }
+    coverageIstanbulReporter: {
+      reports: [ 'html', 'lcovonly' ],
+      fixWebpackSourcePaths: true
     },
     angularCliConfig: './angular-cli.json',
-    reporters: ['progress', 'karma-remap-istanbul'],
+    reporters: ['progress', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
