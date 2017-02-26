@@ -31,7 +31,6 @@ import {Contact} from "../models/contact";
         </md-card-content>
         <md-card-actions fxLayout fxLayoutAlign="center center">
           <button md-button title="Edit" (click)="edit.emit(contact)">Edit</button>
-          <button md-button title="Go back to list" (click)="back.emit()">Go Back</button>
         </md-card-actions>
       </md-card>
     </div>
@@ -45,8 +44,5 @@ export class ContactsDetailComponent {
 
   @Output()
   private edit = new EventEmitter<Contact>();
-
-  @Output()
-  private back = new EventEmitter<void>();
 
 }

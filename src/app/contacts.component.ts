@@ -4,8 +4,13 @@ import {EventBusService, EventType} from "./event-bus.service";
 @Component({
   selector: 'trm-contacts-app',
   template: `
-    <md-toolbar color="primary">{{title}}</md-toolbar>
-    <router-outlet></router-outlet>
+    <md-toolbar color="primary">
+  <div fxLayout fxLayoutAlign="space-between center" fxFlex>
+    {{title}}
+    <a md-button title="Go to about page" class="right" routerLink="about">About</a>
+  </div>
+</md-toolbar>
+<router-outlet></router-outlet>
   `,
   styleUrls: ['./contacts.component.scss']
 })

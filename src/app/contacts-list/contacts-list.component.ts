@@ -18,12 +18,12 @@ import {EventBusService, EventType} from "../event-bus.service";
       <md-icon color="accent">search</md-icon>
     </md-toolbar>
     <md-nav-list>
-      <a md-list-item *ngFor="let contact of contacts | async; trackBy: byId" [routerLink]="['contact',contact.id]">
+      <a md-list-item *ngFor="let contact of contacts | async; trackBy: byId" [routerLink]="['/contact',contact.id]">
         <img md-list-avatar [src]="contact.image" alt="Picture of {{contact.name}}">
         <h3 md-line>{{contact.name}}</h3>
       </a>
     </md-nav-list>
-    <a md-fab title="Add a new contact" class="trm-floating-button" [routerLink]="['contact','new']">
+    <a md-fab title="Add a new contact" class="trm-floating-button" [routerLink]="['/contact','new']">
       <md-icon class="md-24">add</md-icon>
     </a>
 `,

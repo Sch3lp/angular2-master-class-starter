@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Contact} from "../models/contact";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute, Params} from "@angular/router";
 import {ContactsService} from "../contacts.service";
 import {EventBusService, EventType} from "../event-bus.service";
 
@@ -9,8 +9,7 @@ import {EventBusService, EventType} from "../event-bus.service";
   template: `
   <trm-contacts-detail 
     [contact]="contact"
-    (edit)="navigateToEditor($event)"
-    (back)="navigateToList()">
+    (edit)="navigateToEditor($event)">
   </trm-contacts-detail>
 `,
   styleUrls: ['./contacts-detail-view.component.css']
@@ -26,17 +25,14 @@ export class ContactsDetailViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contactsService.get(this.route.snapshot.params['id'])
+    this.route.params
+      .flatMap(params => this.contactsService.get(params['id']))
       .subscribe(contact => this.contact = contact);
     this.eventBus.emit(EventType.AppTitleChanged, 'Detail');
   }
 
   navigateToEditor(contact:Contact) {
     this.router.navigate(['edit'], {relativeTo: this.route});
-  }
-
-  navigateToList() {
-    this.router.navigate(['/']);
   }
 
 }
