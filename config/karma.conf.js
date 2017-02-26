@@ -28,7 +28,7 @@ module.exports = function (config) {
       reports: [ 'html', 'lcovonly' ],
       fixWebpackSourcePaths: true
     },
-    angularCliConfig: './angular-cli.json',
+    angularCliConfig: './.angular-cli.json',
     reporters: ['progress', 'coverage-istanbul'],
     port: 9876,
     colors: true,
