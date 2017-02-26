@@ -1,20 +1,25 @@
-import {Directive, forwardRef} from '@angular/core';
+import {Directive, forwardRef, Input} from '@angular/core';
 import {FormControl, NG_ASYNC_VALIDATORS} from "@angular/forms";
 import {ContactsService, AvailableEmail} from "./contacts.service";
 
-export function checkEmailAvailability(contactsService: ContactsService) {
+export function checkEmailAvailability(contactsService: ContactsService, currentEmail?: string) {
   return (c: FormControl) => {
-    return contactsService.isEmailAvailable(c.value)
-      .map(availability => {
-        return availability instanceof AvailableEmail
-          ? null
-          : {emailTaken: true};
-      });
+    return currentEmail === c.value
+      ? null
+      : contactsService.isEmailAvailable(c.value)
+          .map(availability => {
+            return availability instanceof AvailableEmail
+              ? null
+              : {emailTaken: true};
+          });
   };
 }
 
 @Directive({
   selector: '[trmEmailShouldBeAvailable][ngModel]',
+  inputs: [
+    'currentEmail'
+  ],
   providers: [
     { provide: NG_ASYNC_VALIDATORS,
       useExisting: forwardRef(() => EmailAvailabilityValidator),
@@ -23,10 +28,13 @@ export function checkEmailAvailability(contactsService: ContactsService) {
   ]
 })
 export class EmailAvailabilityValidator {
+  currentEmail:string;
   private _validate: Function;
 
-  constructor(contactsService: ContactsService) {
-    this._validate = checkEmailAvailability(contactsService);
+  constructor(private contactsService: ContactsService) {}
+
+  ngOnInit() {
+    this._validate = checkEmailAvailability(this.contactsService, this.currentEmail);
   }
 
   validate(control: FormControl) {

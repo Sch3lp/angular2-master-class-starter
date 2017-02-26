@@ -53,6 +53,9 @@ import {emailValidator} from "../email-validator.directive";
             <md-input-container fxFlex>
               <input md-input placeholder="City" formControlName="city">
             </md-input-container>
+            <md-input-container fxFlex>
+              <input md-input placeholder="Country" formControlName="country">
+            </md-input-container>
           </fieldset>
         </div>
       </md-card-content>
@@ -87,7 +90,8 @@ export class ContactsCreatorComponent implements OnInit {
           {
             street: '',
             zip: '',
-            city: ''
+            city: '',
+            country: ''
           }
         )
       }
