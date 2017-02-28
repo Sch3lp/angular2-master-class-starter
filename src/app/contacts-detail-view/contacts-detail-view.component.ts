@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Contact} from "../models/contact";
-import {Router, ActivatedRoute, Params} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {ContactsService} from "../contacts.service";
 import {EventBusService, EventType} from "../event-bus.service";
 
@@ -26,7 +26,7 @@ export class ContactsDetailViewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .flatMap(params => this.contactsService.get(params['id']))
+      .switchMap(params => this.contactsService.get(params['id']))
       .subscribe(contact => this.contact = contact);
     this.eventBus.emit(EventType.AppTitleChanged, 'Detail');
   }

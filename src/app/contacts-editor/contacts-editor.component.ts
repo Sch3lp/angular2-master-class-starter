@@ -104,11 +104,12 @@ export class ContactsEditorComponent implements OnInit {
       }
     );
 
-    this.contactsService.get(this.route.snapshot.params['id'])
+    this.route.params
+      .flatMap(params => this.contactsService.get(params['id']))
       .subscribe(contact => {
-        this.contact = contact;
-        this.form.get('email').setAsyncValidators(checkEmailAvailability(this.contactsService, this.contact.email));
-        this.form.patchValue(contact);
+          this.contact = contact;
+          this.form.get('email').setAsyncValidators(checkEmailAvailability(this.contactsService, this.contact.email));
+          this.form.patchValue(contact);
       });
 
     this.eventBus.emit(EventType.AppTitleChanged, 'Edit');
