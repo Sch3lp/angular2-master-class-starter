@@ -20,6 +20,7 @@ import {EmailAvailabilityValidator} from "./email-availability-validator.directi
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
 import {AboutComponent} from "./about/about.component";
 import {ConfirmNavigationGuard} from "./guards/confirm-navigation.guard";
+import {ConfirmDeactivationDialogComponent} from "./guards/confirm-deactivation-dialog.component";
 
 export function askForConfirmation() {
   return window.confirm('Navigate away without saving?');
@@ -37,6 +38,10 @@ export function askForConfirmation() {
     EmailAvailabilityValidator,
     ContactsDashboardComponent,
     AboutComponent,
+    ConfirmDeactivationDialogComponent
+  ],
+  entryComponents: [
+    ConfirmDeactivationDialogComponent
   ],
   imports: [
     BrowserModule,
