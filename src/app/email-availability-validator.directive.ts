@@ -1,11 +1,12 @@
 import {Directive, forwardRef, Input} from '@angular/core';
 import {FormControl, NG_ASYNC_VALIDATORS} from "@angular/forms";
 import {ContactsService, AvailableEmail} from "./contacts.service";
+import {Observable} from "rxjs";
 
 export function checkEmailAvailability(contactsService: ContactsService, currentEmail?: string) {
   return (c: FormControl) => {
     return currentEmail === c.value
-      ? null
+      ? Observable.of(null)
       : contactsService.isEmailAvailable(c.value)
           .map(availability => {
             return availability instanceof AvailableEmail
