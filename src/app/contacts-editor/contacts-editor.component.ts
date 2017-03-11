@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Contact} from "../models/contact";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContactsService} from "../contacts.service";
@@ -6,6 +6,7 @@ import {EventBusService, EventType} from "../event-bus.service";
 import {FormGroup, Validators, FormBuilder} from "@angular/forms";
 import {emailValidator} from "../email-validator.directive";
 import {checkEmailAvailability} from "../email-availability-validator.directive";
+import {Deactivatable} from "../guards/confirm-navigation.guard";
 
 @Component({
   selector: 'trm-contacts-editor',
@@ -74,15 +75,21 @@ import {checkEmailAvailability} from "../email-availability-validator.directive"
   `,
   styleUrls: ['./contacts-editor.component.css']
 })
-export class ContactsEditorComponent implements OnInit {
+export class ContactsEditorComponent implements OnInit, Deactivatable {
+
   private contact: Contact = <Contact>{address: {}};
   private form: FormGroup;
+  private saveButtonWasPressed: boolean = false;
 
   constructor(private contactsService: ContactsService,
               private eventBus: EventBusService,
               private route: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder) {
+  }
+
+  okToDeactivate(): boolean {
+    return this.saveButtonWasPressed;
   }
 
   ngOnInit() {
@@ -116,6 +123,7 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   save(formValue: Contact) {
+    this.saveButtonWasPressed = true;
     let contact:Contact = this.updateContactWithChangedFormValues(this.contact, formValue);
     this.contactsService.updateContact(contact)
       .subscribe(() => this.goToDetails(contact));

@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule, OpaqueToken} from "@angular/core";
+import {NgModule} from "@angular/core";
 import {MaterialModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule} from "@angular/http";
@@ -19,13 +19,25 @@ import {EmailValidator} from "./email-validator.directive";
 import {EmailAvailabilityValidator} from "./email-availability-validator.directive";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
 import {AboutComponent} from "./about/about.component";
+import {ConfirmNavigationGuard} from "./guards/confirm-navigation.guard";
 
-export function doConfirm() {
+export function askForConfirmation() {
   return window.confirm('Navigate away without saving?');
 }
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent, ContactsCreatorComponent, EmailValidator, EmailAvailabilityValidator, ContactsDashboardComponent, AboutComponent],
+  declarations: [
+    ContactsAppComponent,
+    ContactsListComponent,
+    ContactsDetailComponent,
+    ContactsEditorComponent,
+    ContactsDetailViewComponent,
+    ContactsCreatorComponent,
+    EmailValidator,
+    EmailAvailabilityValidator,
+    ContactsDashboardComponent,
+    AboutComponent,
+  ],
   imports: [
     BrowserModule,
     HttpModule,
@@ -38,8 +50,9 @@ export function doConfirm() {
   providers: [
     ContactsService,
     EventBusService,
+    ConfirmNavigationGuard,
     { provide: 'baseUrl', useValue: environment.baseUrl },
-    { provide: 'ConfirmNavigationGuard', useValue: doConfirm }
+    { provide: 'ConfirmNavigationGuard', useValue: askForConfirmation },
   ],
   bootstrap: [ContactsAppComponent]
 })

@@ -4,6 +4,7 @@ import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detai
 import {ContactsCreatorComponent} from "./contacts-creator/contacts-creator.component";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
 import {AboutComponent} from "./about/about.component";
+import {ConfirmNavigationGuard} from "./guards/confirm-navigation.guard";
 
 export const APP_ROUTES:Routes = [
   {
@@ -12,7 +13,7 @@ export const APP_ROUTES:Routes = [
     children: [
       {path: '', redirectTo: '/contact/0', pathMatch: 'full'},
       {path: 'contact/new', component: ContactsCreatorComponent},
-      {path: 'contact/:id/edit', component: ContactsEditorComponent, canDeactivate: ['ConfirmNavigationGuard']},
+      {path: 'contact/:id/edit', component: ContactsEditorComponent, canDeactivate: [ConfirmNavigationGuard]},
       {path: 'contact/:id', component: ContactsDetailViewComponent},
     ]
   },
