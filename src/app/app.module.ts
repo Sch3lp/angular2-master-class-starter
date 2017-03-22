@@ -18,7 +18,6 @@ import {ContactsCreatorComponent} from "./contacts-creator/contacts-creator.comp
 import {EmailValidator} from "./email-validator.directive";
 import {EmailAvailabilityValidator} from "./email-availability-validator.directive";
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
-import {AboutComponent} from "./about/about.component";
 import {ConfirmNavigationGuard} from "./guards/confirm-navigation.guard";
 import {ConfirmDeactivationDialogComponent} from "./guards/confirm-deactivation-dialog.component";
 
@@ -37,7 +36,6 @@ export function askForConfirmation() {
     EmailValidator,
     EmailAvailabilityValidator,
     ContactsDashboardComponent,
-    AboutComponent,
     ConfirmDeactivationDialogComponent
   ],
   entryComponents: [
