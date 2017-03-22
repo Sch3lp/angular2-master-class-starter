@@ -200,3 +200,9 @@ That's why we want to _useExisting_, and make sure we alias the original `EmailA
 It's in the [solutions' commentary](https://github.com/thoughtram/angular2-master-class-solutions/commit/198e9235c49de43d383eed06faa3f6f2926fde1f#diff-2ba0d0bd8a56a22e9f0aed1b936fa497R21)
 
 
+## entryComponents
+`ConfirmDeactivationDialogComponent` is an entryComponent, and not just declared because:
+
+It doesn't need a `selector`, because it gets called from a MdDialog, not via an actual html element in another Angular component that participates in Angular's rendering cycle.
+
+Because of this, Angular's `tree-shaking` will simply not package that component. But we **know** that we actually want it packaged in our vendor.bundle.js, so we'll need to tell Angular explicitly that it's an _entryComponent_. 
