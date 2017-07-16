@@ -206,3 +206,16 @@ It's in the [solutions' commentary](https://github.com/thoughtram/angular2-maste
 It doesn't need a `selector`, because it gets called from a MdDialog, not via an actual html element in another Angular component that participates in Angular's rendering cycle.
 
 Because of this, Angular's `tree-shaking` will simply not package that component. But we **know** that we actually want it packaged in our vendor.bundle.js, so we'll need to tell Angular explicitly that it's an _entryComponent_. 
+
+
+## Why is route.data an Observable?
+Because our ContactsEditorComponent gets reused, and it still needs to react to changes to _new Contact_ information, where before we were reacting to changes in `route.params`.
+
+
+
+
+
+
+
+
+

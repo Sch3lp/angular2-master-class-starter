@@ -20,6 +20,7 @@ import {EmailAvailabilityValidator} from "./email-availability-validator.directi
 import {ContactsDashboardComponent} from "./contacts-dashboard/contacts-dashboard.component";
 import {ConfirmNavigationGuard} from "./guards/confirm-navigation.guard";
 import {ConfirmDeactivationDialogComponent} from "./guards/confirm-deactivation-dialog.component";
+import {ContactsResolver} from "./shared/contacts.resolver";
 
 export function askForConfirmation() {
   return window.confirm('Navigate away without saving?');
@@ -54,6 +55,7 @@ export function askForConfirmation() {
     ContactsService,
     EventBusService,
     ConfirmNavigationGuard,
+    ContactsResolver,
     { provide: 'baseUrl', useValue: environment.baseUrl },
     { provide: 'ConfirmNavigationGuard', useValue: askForConfirmation },
   ],

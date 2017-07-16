@@ -7,6 +7,7 @@ import {FormGroup, Validators, FormBuilder} from "@angular/forms";
 import {emailValidator} from "../email-validator.directive";
 import {checkEmailAvailability} from "../email-availability-validator.directive";
 import {Deactivatable} from "../guards/confirm-navigation.guard";
+import {ContactsResolverData} from "../app.routes";
 
 @Component({
   selector: 'trm-contacts-editor',
@@ -111,14 +112,13 @@ export class ContactsEditorComponent implements OnInit, Deactivatable {
       }
     );
 
-    this.route.params
-      .flatMap(params => this.contactsService.get(params['id']))
+    this.route.data
+      .map((data: ContactsResolverData) => data.contact)
       .subscribe(contact => {
-          this.contact = contact;
-          this.form.get('email').setAsyncValidators(checkEmailAvailability(this.contactsService, this.contact.email));
-          this.form.patchValue(contact);
+        this.contact = contact;
+        this.form.get('email').setAsyncValidators(checkEmailAvailability(this.contactsService, this.contact.email));
+        this.form.patchValue(contact);
       });
-
     this.eventBus.emit(EventType.AppTitleChanged, 'Edit');
   }
 
